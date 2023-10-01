@@ -7,6 +7,8 @@ setup(
     version=__version__,
     packages=find_packages(),
     install_requires=[
-        "flask",
+        "fastapi[all]",
+        "pymongo[srv]",
+        "python-dotenv",
     ]
 )
