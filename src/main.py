@@ -3,6 +3,7 @@ from dotenv import dotenv_values
 from pymongo import MongoClient
 
 from config import ATLAS_URI, DB_NAME
+from src.routes import router
 
 app = FastAPI()
 
@@ -20,3 +21,5 @@ def shutdown_db_client():
 @app.get("/")
 async def root():
     return {"message": "Welcome to the PyMongo tutorial!"}
+
+app.include_router(router, tags=["books"], prefix="/book")
