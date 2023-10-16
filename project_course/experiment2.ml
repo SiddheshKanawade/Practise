@@ -48,6 +48,20 @@ let block_elements_to_add = [
 let nested_blocks_with_elements =
   List.fold_left (fun nested_blocks element -> add_nested_element nested_blocks element) nested_blocks block_elements_to_add
 
+let rec find_value_at_index arr task_number block_number =
+  match arr with
+  | [] -> failwith "Array index out of bounds"
+  | row :: remaining_rows ->
+      if task_number = 0 then
+        match row with
+        | [] -> failwith "Array index out of bounds"
+        | value :: _ when block_number = 0 -> value
+        | _ :: rest_of_row -> find_value_at_index (rest_of_row :: remaining_rows) 0 (block_number - 1)
+      else
+        find_value_at_index remaining_rows (task_number - 1) block_number
+;;    
+
+
 let worst_case_time_of_block nested_block grouped_elements task_number block_number = 
   if nested_block.nst_wcrt > 0.0 then nested_block.nst_wcrt
   else
@@ -68,9 +82,26 @@ let worst_case_time_of_block nested_block grouped_elements task_number block_num
               ) task_group
         ) grouped_elements;
       
+      (*Code to utilise task number and block number*)
+      
       List.iter(fun nst_index ->
-          lock_name_list := !lock_name_list @ [nested_block.nst_lock_name]
+          let lock_element = find_value_at_index grouped_elements task_number block_number in
+          lock_name_list := !lock_name_list @ [lock_element.nst_lock_name]
         )nested_block.nst_nested;
+      
+      let waiting_time=0 in
+      List.iter(fun lock_name ->
+          let time=0 in
+          List.iter(fun task_group->
+              if (List.hd task_group).nst_priority < prio then
+                List.iter(fun element->
+                    if element.nst_lock_name==lock_name then
+                      Printf.printf "Time calculation";
+                    (*Need to find way to find index i, j*)
+                  )task_group
+            )grouped_elements
+          
+        )!lock_name_list;
         
       nested_block.nst_wcrt
     end 
