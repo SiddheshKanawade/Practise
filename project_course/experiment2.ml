@@ -46,28 +46,30 @@ let block_elements_to_add = [
 let nested_blocks_with_elements =
   List.fold_left (fun nested_blocks element -> add_nested_element nested_blocks element) nested_blocks block_elements_to_add
 
-let worst_case_time_of_block nested_block nested_blocks_with_elements task_number block_number = 
+let worst_case_time_of_block nested_block grouped_elements task_number block_number = 
   if nested_block.nst_wcrt > 0.0 then nested_block.nst_wcrt
   else
     begin
-      print_endline "Need to execute";
-      Printf.printf "Lock Name: %s\n" nested_block.nst_lock_name;
+      print_endline "Iterating over allblocklist";
       let cij = nested_block.nst_wcet in
+      let lock_name_list = [] in (*analogous to L*)
       (*let l = [] in*)
       let prio = nested_block.nst_priority in
-      print_endline ("Currently with block " ^ nested_block.nst_task_type);
-      (*Iterate over the list nested_blocks_with_elements*)
-      let aggregated_nested_blocks = nested_blocks_with_elements.nst_elements in
-      let rec get_individual_nested_block_list aggregated_nested_block_list prio nested_block l =
-        match aggregated_nested_block_list with
-        | [] -> l (* Base case: an empty task_list, return L *)
-        | nested_block :: rest ->
-            print_endline ("Currently with block " ^ nested_block.nst_task_type);
-            if nested_block.nst_priority > prio then 
-              print_endline ("priority less than mentioned");
-            get_individual_nested_block_list rest prio nested_block l;
-      in 
-      get_individual_nested_block_list aggregated_nested_blocks prio nested_block [];
+      List.iter(fun task_group ->
+          Printf.printf "Task Type: %s\n" (List.hd task_group).nst_task_type;
+          if (List.hd task_group).nst_priority > prio then
+            List.iter (fun element ->
+                Printf.printf "Key: %d, Lock Name: %s Task Type: %s\n" element.nst_key element.nst_lock_name element.nst_task_type;
+                if element.nst_lock_name==nested_block.nst_lock_name then
+                  List.iter(fun nst_index ->
+                      Printf.printf "Index: %d\n" nst_index;
+                      let short_live_list=[element.nst_lock_name] in
+                      (*Append lock_name_list and short_live_list*)
+                      let new_list=lock_name_list@short_live_list;
+                    ) element.nst_nested
+              ) task_group
+        ) grouped_elements;
+        
       nested_block.nst_wcrt
     end 
 
@@ -93,9 +95,12 @@ let () =
   List.iter (fun group ->
       Printf.printf "Task Type: %s\n" (List.hd group).nst_task_type;
       List.iter (fun element ->
-          Printf.printf "Key: %d, Lock Name: %s\n" element.nst_key element.nst_lock_name
+          Printf.printf "Key: %d, Lock Name: %s\n" element.nst_key element.nst_lock_name; 
+          List.iter(fun index->
+              Printf.printf "Index: %d\n" index;
+            ) element.nst_nested
         ) group
     ) grouped_elements
 
-let ans:float = worst_case_time_of_block element1 nested_blocks_with_elements 1 2
+let ans:float = worst_case_time_of_block element1 grouped_elements 1 2
 

@@ -76,11 +76,14 @@ def worst_case_time_of_bloack(block, allblockList, task_number, block_number):
         """
         Extra for nested goes here
         """
+        # Iterate over all the blocks in allblocklist
         for i in range(len(allblockList)):
             task = allblockList[i]
             if pydash.get(task[0], "priority") <= prio:
                 continue
+            # Iterate over nst_blocks in allblocklist[i]
             for j in range(len(allblockList[i])):
+                # This PART IS REMAINING TO CODE
                 if pydash.get(allblockList[i][j], "type") == pydash.get(block, "type"):
                     for nested_lock in pydash.get(block, "nested"):
                         L += [pydash.get(allblockList[i][j], "type")]
@@ -91,6 +94,9 @@ def worst_case_time_of_bloack(block, allblockList, task_number, block_number):
         for nested_lock in pydash.get(block, "nested"):
             L += [pydash.get(allblockList[task_number][nested_lock], "type")]
         waiting_time = 0
+        print("\n THIS IS LOCK LIST\n")
+        pprint(L)
+        print("\n THIS IS LOCK LIST\n")
         for lock in L:
             time = 0
             for i in range(len(allblockList)):
@@ -127,11 +133,9 @@ all_block_list = []
 # ALL BLOCK LIST IS LIST OF ALL THE BLOCKS, BUT FOR A TASK ALL BLOCKS ARE STORED IN THE FORM OF INSIDE LIST, SO ITS NESTED LIST
 
 for block in blocks_list:
-    pprint(block)
-    print('\n')
     block_list = list(block.values())
     all_block_list += [block_list]
 
 worst_blk_RT(all_block_list)
 print('\n')
-pprint(all_block_list)
+# pprint(all_block_list)

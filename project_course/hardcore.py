@@ -1,5 +1,5 @@
 BLOCKS = []
-
+# First entry of group elements in ocaml will be the task
 BLOCKS.append({
     0: {
         "type":"TaskMainDisplayTask",
