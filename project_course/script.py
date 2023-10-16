@@ -90,13 +90,16 @@ def worst_case_time_of_bloack(block, allblockList, task_number, block_number):
         """
         Extra for nested completed here
         """
-
+        
+        # task number says index of the task in allblocklist
+        # block number says index of the block in allblocklist[task_number]
         for nested_lock in pydash.get(block, "nested"):
+            pprint(allblockList[task_number])
+            print("\n")
+            pprint(block)
+            print("###################")
             L += [pydash.get(allblockList[task_number][nested_lock], "type")]
         waiting_time = 0
-        print("\n THIS IS LOCK LIST\n")
-        pprint(L)
-        print("\n THIS IS LOCK LIST\n")
         for lock in L:
             time = 0
             for i in range(len(allblockList)):

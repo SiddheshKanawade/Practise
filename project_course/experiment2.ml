@@ -62,7 +62,7 @@ let rec find_value_at_index arr task_number block_number =
 ;;    
 
 
-let worst_case_time_of_block nested_block grouped_elements task_number block_number = 
+let rec worst_case_time_of_block nested_block grouped_elements task_number block_number = 
   if nested_block.nst_wcrt > 0.0 then nested_block.nst_wcrt
   else
     begin
@@ -77,31 +77,48 @@ let worst_case_time_of_block nested_block grouped_elements task_number block_num
                 Printf.printf "Key: %d, Lock Name: %s Task Type: %s\n" element.nst_key element.nst_lock_name element.nst_task_type;
                 if element.nst_lock_name==nested_block.nst_lock_name then
                   List.iter(fun nst_index ->
+                      Printf.printf "entered";
                       lock_name_list := !lock_name_list @ [element.nst_lock_name]
                     ) element.nst_nested
               ) task_group
         ) grouped_elements;
       
-      (*Code to utilise task number and block number*)
       
       List.iter(fun nst_index ->
-          let lock_element = find_value_at_index grouped_elements task_number block_number in
+          let lock_element = find_value_at_index grouped_elements task_number nst_index in
           lock_name_list := !lock_name_list @ [lock_element.nst_lock_name]
         )nested_block.nst_nested;
       
-      let waiting_time=0 in
-      List.iter(fun lock_name ->
-          let time=0 in
-          List.iter(fun task_group->
+      let waiting_time= ref 0.0 in
+      
+      List.iter (fun lock_name ->
+          Printf.printf "LockName: %s\n" lock_name; 
+          let time = ref 0.0 in
+          List.iteri(fun index_task task_group->
               if (List.hd task_group).nst_priority < prio then
-                List.iter(fun element->
-                    if element.nst_lock_name==lock_name then
-                      Printf.printf "Time calculation";
+                List.iteri(fun index_element element->
+                    if element.nst_lock_name==lock_name then 
+                      let calculated_time=worst_case_time_of_block element grouped_elements index_task index_element in
+                      if calculated_time > !time then
+                        time := calculated_time
+                  )task_group;
+              waiting_time := !waiting_time +. !time
+            ) grouped_elements 
+        )!lock_name_list ;
+      (*
+        List.iter(fun lock_name -> 
+            let time=0 in
+            List.iter(fun task_group->
+                if (List.hd task_group).nst_priority < prio then
+                  List.iter(fun element->
+                      if element.nst_lock_name==lock_name then
+                        Printf.printf "Time calculation";
                     (*Need to find way to find index i, j*)
-                  )task_group
-            )grouped_elements
+                    )task_group
+              )grouped_elements
           
-        )!lock_name_list;
+          )!lock_name_list;
+          *)
         
       nested_block.nst_wcrt
     end 
