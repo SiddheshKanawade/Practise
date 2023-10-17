@@ -141,4 +141,4 @@ for block in blocks_list:
 
 worst_blk_RT(all_block_list)
 print('\n')
-# pprint(all_block_list)
+pprint(all_block_list)

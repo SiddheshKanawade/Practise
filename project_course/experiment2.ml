@@ -2,6 +2,7 @@
 Enter your program here and send it to the toplevel using the "Eval code" button or [Ctrl-e]. *)
 open Stdlib
 
+
 type nested_block_element = { 
   nst_key: int; 
   nst_task_type: string; 
@@ -33,19 +34,61 @@ let add_nested_element block nst_element =
   { block with nst_elements = nst_element :: block.nst_elements }
 let nested_blocks = create_nested_block ()
 
-let element1 = create_nested_block_element 0 "TaskMainDisplayTask" "DrivingControlResource" 0.411 0.0 250 10 [1]
+(*Create block list properly after verifying*)
+(*Task 1*)
+let element1 = create_nested_block_element 0 "TaskMainDisplayTask" "TaskMainDisplayTask" 0.411 0.0 250 10 [1]
 
-let element2 = create_nested_block_element 1 "DrivingControlResource" "DrivingControlResource" 0.22 0.0 250 13 []
+let element2 = create_nested_block_element 1 "TaskMainDisplayTask" "DrivingControlResource" 0.22 0.0 250 10 [] 
     
-let element3 = create_nested_block_element 0 "TaskMainDisplayTask" "DrivingControlResource1" 0.411 0.0 250 10 [1]
+    (*Task 2*)
+let element3 = create_nested_block_element 0 "TaskMainColorSensorTask" "TaskMainColorSensorTask" 0.068 0.0 100 2 [1;2]
     
-let element4 = create_nested_block_element 0 "TaskMainDisplayTask" "DrivingControlResource2" 0.411 0.0 250 10 [1]
+let element4 = create_nested_block_element 1 "TaskMainColorSensorTask" "DrivingControlResource" 0.028 0.0 100 2 []
+    
+let element5 = create_nested_block_element 2 "TaskMainColorSensorTask" "DrivingControlResource" 0.02 0.0 100 2 []
+    
+(*Task 3*)
+let element6 = create_nested_block_element 0 "TaskMainSonarSensorTask" "TaskMainSonarSensorTask" 0.114 0.0 100 5 [1;2;3;4;5;6;7;8]
+    
+let element7 = create_nested_block_element 1 "TaskMainSonarSensorTask" "DrivingControlResource" 0.019 0.0 100 5 []
+    
+let element8 = create_nested_block_element 2 "TaskMainSonarSensorTask" "DrivingControlResource" 0.018 0.0 100 5 []
+    
+let element9 = create_nested_block_element 3 "TaskMainSonarSensorTask" "DrivingControlResource" 0.01 0.0 100 5 []
+    
+let element10 = create_nested_block_element 4 "TaskMainSonarSensorTask" "DrivingControlResource" 0.018 0.0 100 5 []
+    
+let element11 = create_nested_block_element 5 "TaskMainSonarSensorTask" "DrivingControlResource" 0.012 0.0 100 5 []
+    
+let element12 = create_nested_block_element 6 "TaskMainSonarSensorTask" "DrivingControlResource" 0.019 0.0 100 5 []
+    
+let element13 = create_nested_block_element 7 "TaskMainSonarSensorTask" "DrivingControlResource" 0.022 0.0 100 5 []
+    
+let element14 = create_nested_block_element 8 "TaskMainSonarSensorTask" "DrivingControlResource" 0.019 0.0 100 5 []
+    
+    (*Task 4*)
+let element15 = create_nested_block_element 0 "TaskMainMotorControlTask" "TaskMainMotorControlTask" 0.074 0.0 50 1 [1]
+    
+let element16 = create_nested_block_element 0 "TaskMainMotorControlTask" "DrivingControlResource" 0.071 0.0 50 1 []
+
 
 let block_elements_to_add = [
   element1; 
   element2;
   element3;
   element4;
+  element5;
+  element6;
+  element7;
+  element8;
+  element9;
+  element10;
+  element11;
+  element12;
+  element13;
+  element14;
+  element15;
+  element16;
 ]
 
 let nested_blocks_with_elements =
@@ -113,7 +156,6 @@ let rec loop init_li current_li prev_li nested_block grouped_elements task_numbe
     current_li
 ;;
 
-
 let rec worst_case_time_of_block nested_block grouped_elements task_number block_number = 
   if nested_block.nst_wcrt > 0.0 then nested_block.nst_wcrt
   else
@@ -157,22 +199,21 @@ let rec worst_case_time_of_block nested_block grouped_elements task_number block
               waiting_time := !waiting_time +. !time
             ) grouped_elements 
         )!lock_name_list ;
-      (*
-        List.iter(fun lock_name -> 
-            let time=0 in
-            List.iter(fun task_group->
-                if (List.hd task_group).nst_priority < prio then
-                  List.iter(fun element->
-                      if element.nst_lock_name==lock_name then
-                        Printf.printf "Time calculation";
-                    (*Need to find way to find index i, j*)
-                    )task_group
-              )grouped_elements
-          
-          )!lock_name_list;
-          *)
-        
-      nested_block.nst_wcrt
+      let new_cij = cij +. !waiting_time in
+      let wcrt = loop new_cij new_cij 0.0 nested_block grouped_elements task_number in
+      (*Set given block wcrt as calculated wcrt*)
+      let grouped_elements = List.mapi(fun task_index task_group ->
+          if task_index = task_number then
+            begin
+              List.mapi(fun nested_block_index element ->
+                  if nested_block_index=block_number then
+                    { element with nst_wcrt = wcrt }
+                  else element
+                )task_group
+            end
+          else task_group
+        )grouped_elements in
+      wcrt
     end 
     
 (*Generating all block list*)
@@ -194,7 +235,7 @@ let grouped_elements = group_elements_by_task_type nested_blocks_with_elements.n
 (*Print the all block list*)
 let () =
   List.iter (fun group ->
-      Printf.printf "Task Type: %s\n" (List.hd group).nst_task_type;
+      Printf.printf "\n";
       List.iter (fun element ->
           Printf.printf "Key: %d, Lock Name: %s\n" element.nst_key element.nst_lock_name; 
           List.iter(fun index->
