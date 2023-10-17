@@ -1,5 +1,6 @@
 (* This is an OCaml editor.
 Enter your program here and send it to the toplevel using the "Eval code" button or [Ctrl-e]. *)
+open Stdlib
 
 type nested_block_element = { 
   nst_key: int; 
@@ -18,6 +19,8 @@ type nested_block = {
 }
 
 let lock_name_list = ref [] ;;
+
+let epsilon = 0.001 ;;
 
 let create_nested_block_element nst_key nst_task_type nst_lock_name nst_wcet nst_wcrt nst_time_period nst_priority nst_nested =
   { nst_key; nst_task_type; nst_lock_name; nst_wcet; nst_wcrt; nst_time_period; nst_priority; nst_nested }
@@ -60,6 +63,55 @@ let rec find_value_at_index arr task_number block_number =
       else
         find_value_at_index remaining_rows (task_number - 1) block_number
 ;;    
+
+let equalsf x y epsilon =
+  abs_float (x -. y) < epsilon;;
+
+let isSat_eqn2 init_li current_li high_tasks = 
+  let new_li = ref init_li in
+  List.iter(fun task->
+      let float_timeperiod = float_of_int task.nst_time_period in
+      let task_wcet = task.nst_wcet in 
+      let calculated_val = current_li /. float_timeperiod *. task_wcet in
+      new_li := !new_li +. ceil calculated_val
+    )high_tasks;
+  (*Figureout how epsilon is passing into the function, as its declared globally?*)
+  let result = equalsf current_li !new_li epsilon in
+  result
+;;
+
+let compute_Lilk current_li prev_li high_tasks = 
+  let new_li = ref current_li in
+  List.iter(fun task ->
+      let float_timeperiod = float_of_int task.nst_time_period in
+      let task_wcet = task.nst_wcet in
+      let calculated_val1 = current_li /. float_timeperiod *. task_wcet in
+      let calculated_val2 = prev_li /. float_timeperiod *. task_wcet in
+      new_li := !new_li +. ceil calculated_val1;
+      new_li := !new_li -. ceil calculated_val2;
+    )high_tasks;
+  !new_li
+;;
+
+
+let rec loop init_li current_li prev_li nested_block grouped_elements task_number = 
+  let prio=nested_block.nst_priority in 
+  let tasklist=List.map (fun task -> List.hd task) grouped_elements in
+  let high_tasks = List.filter (fun x -> x.nst_priority > prio) tasklist in
+  (*Define isSat_eq2 here*)
+  if not (isSat_eqn2 init_li current_li high_tasks) && current_li < float_of_int nested_block.nst_time_period then
+    begin
+      let new_lilk = compute_Lilk current_li prev_li high_tasks in
+      loop init_li new_lilk current_li nested_block grouped_elements task_number
+    end
+  else if current_li >= float_of_int nested_block.nst_time_period then
+    begin
+      Printf.printf "Unschedulable block - %s" nested_block.nst_lock_name;
+      -1.0
+    end 
+  else 
+    current_li
+;;
 
 
 let rec worst_case_time_of_block nested_block grouped_elements task_number block_number = 
