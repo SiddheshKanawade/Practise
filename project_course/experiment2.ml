@@ -168,7 +168,6 @@ let rec worst_case_time_of_block nested_block grouped_elements task_number block
           Printf.printf "Task Type: %s\n" (List.hd task_group).nst_task_type;
           if (List.hd task_group).nst_priority > prio then
             List.iter (fun element ->
-                Printf.printf "Key: %d, Lock Name: %s Task Type: %s\n" element.nst_key element.nst_lock_name element.nst_task_type;
                 if element.nst_lock_name==nested_block.nst_lock_name then
                   List.iter(fun nst_index ->
                       Printf.printf "entered";
@@ -186,7 +185,6 @@ let rec worst_case_time_of_block nested_block grouped_elements task_number block
       let waiting_time= ref 0.0 in
       
       List.iter (fun lock_name ->
-          Printf.printf "LockName: %s\n" lock_name; 
           let time = ref 0.0 in
           List.iteri(fun index_task task_group->
               if (List.hd task_group).nst_priority < prio then
@@ -233,16 +231,24 @@ let group_elements_by_task_type elements =
     
 let grouped_elements = group_elements_by_task_type nested_blocks_with_elements.nst_elements
 (*Print the all block list*)
-let () =
-  List.iter (fun group ->
-      Printf.printf "\n";
-      List.iter (fun element ->
-          Printf.printf "Key: %d, Lock Name: %s\n" element.nst_key element.nst_lock_name; 
-          List.iter(fun index->
-              Printf.printf "Index: %d\n" index;
-            ) element.nst_nested
-        ) group
-    ) grouped_elements
+    (*
+      let () =
+        List.iter (fun group ->
+            Printf.printf "\n";
+            List.iter (fun element ->
+                List.iter(fun index->
+                    Printf.printf "Index: %d\n" index;
+                  ) element.nst_nested
+              ) group
+          ) grouped_elements
+          *)
+let worst_blk_RT grouped_elements = 
+  List.iteri(fun task_index task_group ->
+      List.iteri(fun element_index element ->
+          let wcrt = worst_case_time_of_block element grouped_elements task_index element_index in
+          Printf.printf "Nested Element %s: WCRT = %f\n" element.nst_lock_name wcrt;
+        )task_group
+    )grouped_elements
 
-let ans:float = worst_case_time_of_block element1 grouped_elements 1 2
+let ans = worst_blk_RT grouped_elements
 
