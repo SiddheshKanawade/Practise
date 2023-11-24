@@ -1,0 +1,308 @@
+Results
+This is temp
+No. of tasks: 4
+Schedulable - TaskMainDisplayTask : WCRT = 1.075000
+Schedulable - TaskMainColorSensorTask : WCRT = 1.921000
+Schedulable - TaskMainSonarSensorTask : WCRT = 5.837000
+Schedulable - TaskMainMotorControlTask : WCRT = 0.667000
+
+...Schedulability Analysis Completed...
+################################################################
+No. of blocks: 12
+Line No: 4280
+Task Name: TaskMainMotorControlTask
+Lock Name: DrivingControlResource
+Number of Occurrences: 1
+Prior: 1
+WCET: 0.071000
+
+Line No: 4411
+Task Name: TaskMainColorSensorTask
+Lock Name: DrivingControlResource
+Number of Occurrences: 2
+Prior: 2
+WCET: 0.028000
+
+Line No: 4416
+Task Name: TaskMainColorSensorTask
+Lock Name: DrivingControlResource
+Number of Occurrences: 2
+Prior: 2
+WCET: 0.020000
+
+Line No: 4830
+Task Name: TaskMainDisplayTask
+Lock Name: DrivingControlResource
+Number of Occurrences: 1
+Prior: 10
+WCET: 0.220000
+
+Line No: 4589
+Task Name: TaskMainSonarSensorTask
+Lock Name: DrivingControlResource
+Number of Occurrences: 8
+Prior: 5
+WCET: 0.019000
+
+Line No: 4624
+Task Name: TaskMainSonarSensorTask
+Lock Name: DrivingControlResource
+Number of Occurrences: 8
+Prior: 5
+WCET: 0.018000
+
+Line No: 4643
+Task Name: TaskMainSonarSensorTask
+Lock Name: DrivingControlResource
+Number of Occurrences: 8
+Prior: 5
+WCET: 0.010000
+
+Line No: 4651
+Task Name: TaskMainSonarSensorTask
+Lock Name: DrivingControlResource
+Number of Occurrences: 8
+Prior: 5
+WCET: 0.018000
+
+Line No: 4671
+Task Name: TaskMainSonarSensorTask
+Lock Name: DrivingControlResource
+Number of Occurrences: 8
+Prior: 5
+WCET: 0.012000
+
+Line No: 4679
+Task Name: TaskMainSonarSensorTask
+Lock Name: DrivingControlResource
+Number of Occurrences: 8
+Prior: 5
+WCET: 0.019000
+
+Line No: 4705
+Task Name: TaskMainSonarSensorTask
+Lock Name: DrivingControlResource
+Number of Occurrences: 8
+Prior: 5
+WCET: 0.022000
+
+Line No: 4732
+Task Name: TaskMainSonarSensorTask
+Lock Name: DrivingControlResource
+Number of Occurrences: 8
+Prior: 5
+WCET: 0.019000
+
+
+################################################################
+No. of tasks: 4
+Task Name: TaskMainDisplayTask
+File Name: TaskMainDisplayTask
+Priority: 10
+periodicity: 250
+WCET: 0.411000
+
+Task Name: TaskMainColorSensorTask
+File Name: TaskMainColorSensorTask
+Priority: 2
+periodicity: 100
+WCET: 0.068000
+
+Task Name: TaskMainSonarSensorTask
+File Name: TaskMainSonarSensorTask
+Priority: 5
+periodicity: 100
+WCET: 0.114000
+
+Task Name: TaskMainMotorControlTask
+File Name: TaskMainMotorControlTask
+Priority: 1
+periodicity: 50
+WCET: 0.074000
+
+
+################################################################
+Results
+No. of tasks: 4
+Schedulable - TaskMainDisplayTask : WCRT = 1.075000
+Schedulable - TaskMainColorSensorTask : WCRT = 1.921000
+Schedulable - TaskMainSonarSensorTask : WCRT = 5.837000
+Schedulable - TaskMainMotorControlTask : WCRT = 0.667000
+Conflicting Accesses: 146
+(<TaskMainMotorcontrolTask,4282,dc.duration,write>,<TaskMainColorSensorTask,4424,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4284,dc.priority,write>,<TaskMainColorSensorTask,4421,dc.priority,write>)
+(<TaskMainMotorcontrolTask,4285,dc.duration,write>,<TaskMainColorSensorTask,4424,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4286,dc.speed_left,write>,<TaskMainColorSensorTask,4422,dc.speed_left,write>)
+(<TaskMainMotorcontrolTask,4287,dc.speed_right,write>,<TaskMainColorSensorTask,4423,dc.speed_right,write>)
+(<TaskMainMotorcontrolTask,4282,dc.duration,write>,<TaskMainSonarSensorTask,4597,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4282,dc.duration,write>,<TaskMainSonarSensorTask,4632,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4282,dc.duration,write>,<TaskMainSonarSensorTask,4659,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4282,dc.duration,write>,<TaskMainSonarSensorTask,4687,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4282,dc.duration,write>,<TaskMainSonarSensorTask,4713,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4282,dc.duration,write>,<TaskMainSonarSensorTask,4740,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4284,dc.priority,write>,<TaskMainSonarSensorTask,4594,dc.priority,write>)
+(<TaskMainMotorcontrolTask,4284,dc.priority,write>,<TaskMainSonarSensorTask,4629,dc.priority,write>)
+(<TaskMainMotorcontrolTask,4284,dc.priority,write>,<TaskMainSonarSensorTask,4656,dc.priority,write>)
+(<TaskMainMotorcontrolTask,4284,dc.priority,write>,<TaskMainSonarSensorTask,4684,dc.priority,write>)
+(<TaskMainMotorcontrolTask,4284,dc.priority,write>,<TaskMainSonarSensorTask,4710,dc.priority,write>)
+(<TaskMainMotorcontrolTask,4284,dc.priority,write>,<TaskMainSonarSensorTask,4737,dc.priority,write>)
+(<TaskMainMotorcontrolTask,4285,dc.duration,write>,<TaskMainSonarSensorTask,4597,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4285,dc.duration,write>,<TaskMainSonarSensorTask,4632,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4285,dc.duration,write>,<TaskMainSonarSensorTask,4659,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4285,dc.duration,write>,<TaskMainSonarSensorTask,4687,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4285,dc.duration,write>,<TaskMainSonarSensorTask,4713,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4285,dc.duration,write>,<TaskMainSonarSensorTask,4740,dc.duration,write>)
+(<TaskMainMotorcontrolTask,4286,dc.speed_left,write>,<TaskMainSonarSensorTask,4595,dc.speed_left,write>)
+(<TaskMainMotorcontrolTask,4286,dc.speed_left,write>,<TaskMainSonarSensorTask,4630,dc.speed_left,write>)
+(<TaskMainMotorcontrolTask,4286,dc.speed_left,write>,<TaskMainSonarSensorTask,4657,dc.speed_left,write>)
+(<TaskMainMotorcontrolTask,4286,dc.speed_left,write>,<TaskMainSonarSensorTask,4685,dc.speed_left,write>)
+(<TaskMainMotorcontrolTask,4286,dc.speed_left,write>,<TaskMainSonarSensorTask,4711,dc.speed_left,write>)
+(<TaskMainMotorcontrolTask,4286,dc.speed_left,write>,<TaskMainSonarSensorTask,4738,dc.speed_left,write>)
+(<TaskMainMotorcontrolTask,4287,dc.speed_right,write>,<TaskMainSonarSensorTask,4596,dc.speed_right,write>)
+(<TaskMainMotorcontrolTask,4287,dc.speed_right,write>,<TaskMainSonarSensorTask,4631,dc.speed_right,write>)
+(<TaskMainMotorcontrolTask,4287,dc.speed_right,write>,<TaskMainSonarSensorTask,4658,dc.speed_right,write>)
+(<TaskMainMotorcontrolTask,4287,dc.speed_right,write>,<TaskMainSonarSensorTask,4686,dc.speed_right,write>)
+(<TaskMainMotorcontrolTask,4287,dc.speed_right,write>,<TaskMainSonarSensorTask,4712,dc.speed_right,write>)
+(<TaskMainMotorcontrolTask,4287,dc.speed_right,write>,<TaskMainSonarSensorTask,4739,dc.speed_right,write>)
+(<TaskMainColorSensorTask,4418,SeekStarted,write>,<TaskMainSonarSensorTask,4591,SeekStarted,write>)
+(<TaskMainColorSensorTask,4418,SeekStarted,write>,<TaskMainSonarSensorTask,4613,SeekStarted,read>)
+(<TaskMainColorSensorTask,4418,SeekStarted,write>,<TaskMainSonarSensorTask,4614,SeekStarted,write>)
+(<TaskMainColorSensorTask,4418,SeekStarted,write>,<TaskMainSonarSensorTask,4626,SeekStarted,write>)
+(<TaskMainColorSensorTask,4418,SeekStarted,write>,<TaskMainSonarSensorTask,4640,SeekStarted,read>)
+(<TaskMainColorSensorTask,4418,SeekStarted,write>,<TaskMainSonarSensorTask,4653,SeekStarted,write>)
+(<TaskMainColorSensorTask,4418,SeekStarted,write>,<TaskMainSonarSensorTask,4681,SeekStarted,write>)
+(<TaskMainColorSensorTask,4418,SeekStarted,write>,<TaskMainSonarSensorTask,4707,SeekStarted,write>)
+(<TaskMainColorSensorTask,4418,SeekStarted,write>,<TaskMainSonarSensorTask,4724,SeekStarted,write>)
+(<TaskMainColorSensorTask,4418,SeekStarted,write>,<TaskMainSonarSensorTask,4734,SeekStarted,write>)
+(<TaskMainColorSensorTask,4421,dc.priority,write>,<TaskMainSonarSensorTask,4594,dc.priority,write>)
+(<TaskMainColorSensorTask,4421,dc.priority,write>,<TaskMainSonarSensorTask,4629,dc.priority,write>)
+(<TaskMainColorSensorTask,4421,dc.priority,write>,<TaskMainSonarSensorTask,4656,dc.priority,write>)
+(<TaskMainColorSensorTask,4421,dc.priority,write>,<TaskMainSonarSensorTask,4684,dc.priority,write>)
+(<TaskMainColorSensorTask,4421,dc.priority,write>,<TaskMainSonarSensorTask,4710,dc.priority,write>)
+(<TaskMainColorSensorTask,4421,dc.priority,write>,<TaskMainSonarSensorTask,4737,dc.priority,write>)
+(<TaskMainColorSensorTask,4422,dc.speed_left,write>,<TaskMainSonarSensorTask,4595,dc.speed_left,write>)
+(<TaskMainColorSensorTask,4422,dc.speed_left,write>,<TaskMainSonarSensorTask,4630,dc.speed_left,write>)
+(<TaskMainColorSensorTask,4422,dc.speed_left,write>,<TaskMainSonarSensorTask,4657,dc.speed_left,write>)
+(<TaskMainColorSensorTask,4422,dc.speed_left,write>,<TaskMainSonarSensorTask,4685,dc.speed_left,write>)
+(<TaskMainColorSensorTask,4422,dc.speed_left,write>,<TaskMainSonarSensorTask,4711,dc.speed_left,write>)
+(<TaskMainColorSensorTask,4422,dc.speed_left,write>,<TaskMainSonarSensorTask,4738,dc.speed_left,write>)
+(<TaskMainColorSensorTask,4423,dc.speed_right,write>,<TaskMainSonarSensorTask,4596,dc.speed_right,write>)
+(<TaskMainColorSensorTask,4423,dc.speed_right,write>,<TaskMainSonarSensorTask,4631,dc.speed_right,write>)
+(<TaskMainColorSensorTask,4423,dc.speed_right,write>,<TaskMainSonarSensorTask,4658,dc.speed_right,write>)
+(<TaskMainColorSensorTask,4423,dc.speed_right,write>,<TaskMainSonarSensorTask,4686,dc.speed_right,write>)
+(<TaskMainColorSensorTask,4423,dc.speed_right,write>,<TaskMainSonarSensorTask,4712,dc.speed_right,write>)
+(<TaskMainColorSensorTask,4423,dc.speed_right,write>,<TaskMainSonarSensorTask,4739,dc.speed_right,write>)
+(<TaskMainColorSensorTask,4424,dc.duration,write>,<TaskMainSonarSensorTask,4597,dc.duration,write>)
+(<TaskMainColorSensorTask,4424,dc.duration,write>,<TaskMainSonarSensorTask,4632,dc.duration,write>)
+(<TaskMainColorSensorTask,4424,dc.duration,write>,<TaskMainSonarSensorTask,4659,dc.duration,write>)
+(<TaskMainColorSensorTask,4424,dc.duration,write>,<TaskMainSonarSensorTask,4687,dc.duration,write>)
+(<TaskMainColorSensorTask,4424,dc.duration,write>,<TaskMainSonarSensorTask,4713,dc.duration,write>)
+(<TaskMainColorSensorTask,4424,dc.duration,write>,<TaskMainSonarSensorTask,4740,dc.duration,write>)
+(<TaskMainSonarSensorTask,4519,i2c_port->pt_num,write>,<TaskMainDisplayTask,5136,i2c_port->pt_num,write>)
+(<TaskMainSonarSensorTask,4520,i2c_port->pt_begun,write>,<TaskMainDisplayTask,5137,i2c_port->pt_begun,write>)
+(<TaskMainSonarSensorTask,4522,i2c_port->current_pt,write>,<TaskMainDisplayTask,5139,i2c_port->current_pt,write>)
+(<TaskMainSonarSensorTask,4525,i2c_port->addr_int,write>,<TaskMainDisplayTask,5142,i2c_port->addr_int,write>)
+(<TaskMainSonarSensorTask,4525,i2c_port->addr_int,write>,<TaskMainDisplayTask,5143,i2c_port->addr_int,write>)
+(<TaskMainSonarSensorTask,4526,i2c_port->addr_int,write>,<TaskMainDisplayTask,5142,i2c_port->addr_int,write>)
+(<TaskMainSonarSensorTask,4526,i2c_port->addr_int,write>,<TaskMainDisplayTask,5143,i2c_port->addr_int,write>)
+(<TaskMainSonarSensorTask,4527,i2c_port->start,write>,<TaskMainDisplayTask,5144,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4527,i2c_port->start,write>,<TaskMainDisplayTask,5161,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4527,i2c_port->start,write>,<TaskMainDisplayTask,5163,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4527,i2c_port->start,write>,<TaskMainDisplayTask,5178,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4529,i2c_port->stop,write>,<TaskMainDisplayTask,5146,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4529,i2c_port->stop,write>,<TaskMainDisplayTask,5148,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4529,i2c_port->stop,write>,<TaskMainDisplayTask,5166,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4529,i2c_port->stop,write>,<TaskMainDisplayTask,5179,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4531,i2c_port->stop,write>,<TaskMainDisplayTask,5146,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4531,i2c_port->stop,write>,<TaskMainDisplayTask,5148,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4531,i2c_port->stop,write>,<TaskMainDisplayTask,5166,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4531,i2c_port->stop,write>,<TaskMainDisplayTask,5179,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4533,i2c_port->tx,write>,<TaskMainDisplayTask,5150,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4533,i2c_port->tx,write>,<TaskMainDisplayTask,5167,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4533,i2c_port->tx,write>,<TaskMainDisplayTask,5181,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4533,i2c_port->tx,write>,<TaskMainDisplayTask,5183,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4534,i2c_port->data,write>,<TaskMainDisplayTask,5151,i2c_port->data,write>)
+(<TaskMainSonarSensorTask,4534,i2c_port->data,write>,<TaskMainDisplayTask,5174,i2c_port->data,write>)
+(<TaskMainSonarSensorTask,4534,i2c_port->data,write>,<TaskMainDisplayTask,5185,i2c_port->data,write>)
+(<TaskMainSonarSensorTask,4535,i2c_port->nbytes,write>,<TaskMainDisplayTask,5152,i2c_port->nbytes,write>)
+(<TaskMainSonarSensorTask,4535,i2c_port->nbytes,write>,<TaskMainDisplayTask,5175,i2c_port->nbytes,write>)
+(<TaskMainSonarSensorTask,4535,i2c_port->nbytes,write>,<TaskMainDisplayTask,5186,i2c_port->nbytes,write>)
+(<TaskMainSonarSensorTask,4544,i2c_port->start,write>,<TaskMainDisplayTask,5144,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4544,i2c_port->start,write>,<TaskMainDisplayTask,5161,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4544,i2c_port->start,write>,<TaskMainDisplayTask,5163,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4544,i2c_port->start,write>,<TaskMainDisplayTask,5178,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4546,i2c_port->start,write>,<TaskMainDisplayTask,5144,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4546,i2c_port->start,write>,<TaskMainDisplayTask,5161,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4546,i2c_port->start,write>,<TaskMainDisplayTask,5163,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4546,i2c_port->start,write>,<TaskMainDisplayTask,5178,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4548,i2c_port->restart,write>,<TaskMainDisplayTask,5165,i2c_port->restart,write>)
+(<TaskMainSonarSensorTask,4549,i2c_port->stop,write>,<TaskMainDisplayTask,5146,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4549,i2c_port->stop,write>,<TaskMainDisplayTask,5148,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4549,i2c_port->stop,write>,<TaskMainDisplayTask,5166,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4549,i2c_port->stop,write>,<TaskMainDisplayTask,5179,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4550,i2c_port->tx,write>,<TaskMainDisplayTask,5150,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4550,i2c_port->tx,write>,<TaskMainDisplayTask,5167,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4550,i2c_port->tx,write>,<TaskMainDisplayTask,5181,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4550,i2c_port->tx,write>,<TaskMainDisplayTask,5183,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4556,i2c_port->addr,write>,<TaskMainDisplayTask,5173,i2c_port->addr,write>)
+(<TaskMainSonarSensorTask,4557,i2c_port->data,write>,<TaskMainDisplayTask,5151,i2c_port->data,write>)
+(<TaskMainSonarSensorTask,4557,i2c_port->data,write>,<TaskMainDisplayTask,5174,i2c_port->data,write>)
+(<TaskMainSonarSensorTask,4557,i2c_port->data,write>,<TaskMainDisplayTask,5185,i2c_port->data,write>)
+(<TaskMainSonarSensorTask,4558,i2c_port->nbytes,write>,<TaskMainDisplayTask,5152,i2c_port->nbytes,write>)
+(<TaskMainSonarSensorTask,4558,i2c_port->nbytes,write>,<TaskMainDisplayTask,5175,i2c_port->nbytes,write>)
+(<TaskMainSonarSensorTask,4558,i2c_port->nbytes,write>,<TaskMainDisplayTask,5186,i2c_port->nbytes,write>)
+(<TaskMainSonarSensorTask,4561,i2c_port->start,write>,<TaskMainDisplayTask,5144,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4561,i2c_port->start,write>,<TaskMainDisplayTask,5161,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4561,i2c_port->start,write>,<TaskMainDisplayTask,5163,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4561,i2c_port->start,write>,<TaskMainDisplayTask,5178,i2c_port->start,write>)
+(<TaskMainSonarSensorTask,4562,i2c_port->stop,write>,<TaskMainDisplayTask,5146,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4562,i2c_port->stop,write>,<TaskMainDisplayTask,5148,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4562,i2c_port->stop,write>,<TaskMainDisplayTask,5166,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4562,i2c_port->stop,write>,<TaskMainDisplayTask,5179,i2c_port->stop,write>)
+(<TaskMainSonarSensorTask,4564,i2c_port->tx,write>,<TaskMainDisplayTask,5150,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4564,i2c_port->tx,write>,<TaskMainDisplayTask,5167,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4564,i2c_port->tx,write>,<TaskMainDisplayTask,5181,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4564,i2c_port->tx,write>,<TaskMainDisplayTask,5183,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4566,i2c_port->tx,write>,<TaskMainDisplayTask,5150,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4566,i2c_port->tx,write>,<TaskMainDisplayTask,5167,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4566,i2c_port->tx,write>,<TaskMainDisplayTask,5181,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4566,i2c_port->tx,write>,<TaskMainDisplayTask,5183,i2c_port->tx,write>)
+(<TaskMainSonarSensorTask,4568,i2c_port->data,write>,<TaskMainDisplayTask,5151,i2c_port->data,write>)
+(<TaskMainSonarSensorTask,4568,i2c_port->data,write>,<TaskMainDisplayTask,5174,i2c_port->data,write>)
+(<TaskMainSonarSensorTask,4568,i2c_port->data,write>,<TaskMainDisplayTask,5185,i2c_port->data,write>)
+(<TaskMainSonarSensorTask,4569,i2c_port->nbytes,write>,<TaskMainDisplayTask,5152,i2c_port->nbytes,write>)
+(<TaskMainSonarSensorTask,4569,i2c_port->nbytes,write>,<TaskMainDisplayTask,5175,i2c_port->nbytes,write>)
+(<TaskMainSonarSensorTask,4569,i2c_port->nbytes,write>,<TaskMainDisplayTask,5186,i2c_port->nbytes,write>)
+(<TaskMainSonarSensorTask,4570,i2c_port->last_pt,write>,<TaskMainDisplayTask,5187,i2c_port->last_pt,write>)
+(<TaskMainSonarSensorTask,4571,i2c_port->state,write>,<TaskMainDisplayTask,5188,i2c_port->state,write>)
+ 
+Potentially racy accesses remaining after rule1 : 111
+
+Potentially racy accesses remaining after rule2 : 77
+
+Potentially racy accesses remaining after rule3 : 77
+
+Potentially racy accesses remaining after rule4 : 77
+
+Potential races: 0 
+
+Rule Coverage
+
+Conflicting Accesses : 146
+Applying rule.....1
+No. of CAs eliminated: (146-111) = 35
+
+Applying rule.....2
+No. of CAs eliminated: (146-77) = 69
+
+Applying rule.....3
+No. of CAs eliminated: (146-77) = 69
+
+Applying rule.....4
+No. of CAs eliminated: (146-77) = 69
+
+Applying rule.....5
+No. of CAs eliminated: (146-34) = 112
+
+Applying rule.....6
+No. of CAs eliminated: (146-140) = 6
