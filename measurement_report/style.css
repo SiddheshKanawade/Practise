@@ -1,0 +1,351 @@
+.a-4-cover-page,
+.a-4-cover-page * {
+  box-sizing: border-box;
+}
+.a-4-cover-page {
+  background: #ffffff;
+  width: 1119px;
+  height: 1583px;
+  position: relative;
+  overflow: hidden;
+}
+.frame-195 {
+  display: flex;
+  flex-direction: row;
+  gap: 33px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 985px;
+  position: absolute;
+  left: 67px;
+  top: 202px;
+}
+.group-178 {
+  flex-shrink: 0;
+  width: 370px;
+  height: 104px;
+  position: relative;
+}
+.group-196 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-8 {
+  width: 1119px;
+  height: 560px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.frame-200 {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  left: 108px;
+  top: 145px;
+}
+.logo-1 {
+  flex-shrink: 0;
+  width: 154px;
+  height: 49px;
+  position: relative;
+  overflow: visible;
+}
+.roof-scope-measurement-report {
+  color: #ffffff;
+  text-align: left;
+  position: relative;
+  width: 697px;
+  height: 244px;
+}
+.roof-scope-measurement-report-span {
+  color: #ffffff;
+  font-family: "Inter-Black", sans-serif;
+  font-size: 66px;
+  line-height: 140%;
+  font-weight: 900;
+}
+.roof-scope-measurement-report-span2 {
+  color: #ffffff;
+  font-family: "Inter-ExtraLight", sans-serif;
+  font-size: 40px;
+  line-height: 140%;
+  font-weight: 200;
+}
+.roof-scope-measurement-report-span3 {
+  color: #ffffff;
+  font-family: "Inter-ExtraLight", sans-serif;
+  font-size: 36px;
+  line-height: 140%;
+  font-weight: 200;
+}
+.group-197 {
+  position: absolute;
+  inset: 0;
+}
+.group-201 {
+  width: 972px;
+  height: 236.51px;
+  position: static;
+}
+.rectangle-82 {
+  border-radius: 0px;
+  width: 972px;
+  height: 236.51px;
+  position: absolute;
+  left: 74px;
+  top: 516px;
+  overflow: visible;
+}
+.frame-196 {
+  display: flex;
+  flex-direction: row;
+  gap: 51px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 859.51px;
+  position: absolute;
+  left: 124.96px;
+  top: 571.76px;
+}
+.group-199 {
+  flex-shrink: 0;
+  width: 631px;
+  height: 136px;
+  position: static;
+}
+.frame-205 {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.frame-206 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.prepared-by {
+  color: #a7a7b4;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  position: relative;
+  width: 172px;
+  height: 20.94px;
+}
+.roofer-name {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 24px;
+  line-height: 130%;
+  font-weight: 700;
+  position: relative;
+  width: 191px;
+}
+.org-name {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 24px;
+  line-height: 130%;
+  font-weight: 400;
+  position: relative;
+  width: 191px;
+}
+.frame-199 {
+  display: flex;
+  flex-direction: row;
+  gap: 39px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  height: 136px;
+  position: relative;
+}
+.line-3 {
+  flex-shrink: 0;
+  width: 150px;
+  height: 0px;
+  position: relative;
+  transform: translate(-0.5px, 0px);
+  overflow: visible;
+}
+.roofer-email {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Light", sans-serif;
+  font-size: 18px;
+  line-height: 130%;
+  font-weight: 300;
+  position: relative;
+  width: 389px;
+  height: 35px;
+}
+.group-204 {
+  position: absolute;
+  inset: 0;
+}
+.address {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Black", sans-serif;
+  font-size: 30px;
+  line-height: 200%;
+  font-weight: 900;
+  position: absolute;
+  left: 650px;
+  top: 849px;
+  width: 362px;
+  height: 96px;
+}
+.frame-1992 {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 250px;
+  position: absolute;
+  left: 650px;
+  top: 1019px;
+}
+.group-192 {
+  flex-shrink: 0;
+  width: 241px;
+  height: 58px;
+  position: static;
+}
+.capture-date-capture-date {
+  color: #9c9c9c;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 241px;
+  height: 58px;
+}
+.capture-date-capture-date-span {
+  color: #9c9c9c;
+  font-family: "Inter-Black", sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+}
+.capture-date-capture-date-span2 {
+  color: #9c9c9c;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+}
+.ordered-by-customer-name {
+  color: #9c9c9c;
+  text-align: left;
+  font-family: "-", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 0px;
+  top: 100px;
+  width: 241px;
+  height: 58px;
+}
+.ordered-by-customer-name-span {
+  color: #9c9c9c;
+  font-family: "Inter-Black", sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+}
+.ordered-by-customer-name-span2 {
+  color: #9c9c9c;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+}
+.report-and-analytics-generated-using-i-analyze-properties-dashboard-and-terms {
+  color: #6d6d6d;
+  text-align: center;
+  font-family: "-", sans-serif;
+  font-size: 18px;
+  line-height: 130%;
+  font-weight: 400;
+  position: absolute;
+  left: calc(50% - 451.5px);
+  top: 1495px;
+  width: 904px;
+}
+.report-and-analytics-generated-using-i-analyze-properties-dashboard-and-terms-span {
+  color: #6d6d6d;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 130%;
+  font-weight: 400;
+}
+.report-and-analytics-generated-using-i-analyze-properties-dashboard-and-terms-span2 {
+  color: #6d6d6d;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 18px;
+  line-height: 130%;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.report-and-analytics-generated-using-i-analyze-properties-dashboard-and-terms-span3 {
+  color: #6d6d6d;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 130%;
+  font-weight: 400;
+}
+.report-and-analytics-generated-using-i-analyze-properties-dashboard-and-terms-span4 {
+  color: #6d6d6d;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 18px;
+  line-height: 130%;
+  font-weight: 700;
+}
+.report-and-analytics-generated-using-i-analyze-properties-dashboard-and-terms-span5 {
+  color: #6d6d6d;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 18px;
+  line-height: 130%;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.report-and-analytics-generated-using-i-analyze-properties-dashboard-and-terms-span6 {
+  color: #6d6d6d;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 18px;
+  line-height: 130%;
+  font-weight: 700;
+}
+.house-image {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 24px;
+  line-height: 130%;
+  font-weight: 700;
+  position: absolute;
+  left: 100px;
+  top: 833px;
+  width: 500px;
+  height: 344px;
+}

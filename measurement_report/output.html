@@ -1,0 +1,43 @@
+
+
+<style>
+
+</style>
+
+<div id="fig_el7240950052240162651308582"></div>
+<script>
+function mpld3_load_lib(url, callback){
+  var s = document.createElement('script');
+  s.src = url;
+  s.async = true;
+  s.onreadystatechange = s.onload = callback;
+  s.onerror = function(){console.warn("failed to load library " + url);};
+  document.getElementsByTagName("head")[0].appendChild(s);
+}
+
+if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
+   // already loaded: just create the figure
+   !function(mpld3){
+       
+       mpld3.draw_figure("fig_el7240950052240162651308582", {"width": 1280.0, "height": 960.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [-0.45, 9.45], "ylim": [-5.43009574063083, 8.550340340302192], "xdomain": [-0.45, 9.45], "ydomain": [-5.43009574063083, 8.550340340302192], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 7, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 9, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el724095099984112", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el724095100014512", "color": "#1F77B4", "linewidth": 1.5, "dasharray": "none", "alpha": 1, "zorder": 2, "drawstyle": "default"}], "paths": [], "markers": [], "texts": [], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[0.0, 0.0], [1.0, 0.8414709848078965], [2.0, 1.8185948536513634], [3.0, 0.4233600241796016], [4.0, -3.0272099812317133], [5.0, -4.794621373315692], [6.0, -1.6764929891935552], [7.0, 4.598906191031523], [8.0, 7.914865972987054], [9.0, 3.7090663671758093]]}, "id": "el724095005224016", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}]});
+   }(mpld3);
+}else if(typeof define === "function" && define.amd){
+   // require.js is available: use it to load d3/mpld3
+   require.config({paths: {d3: "https://d3js.org/d3.v5"}});
+   require(["d3"], function(d3){
+      window.d3 = d3;
+      mpld3_load_lib("https://mpld3.github.io/js/mpld3.v0.5.9.js", function(){
+         
+         mpld3.draw_figure("fig_el7240950052240162651308582", {"width": 1280.0, "height": 960.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [-0.45, 9.45], "ylim": [-5.43009574063083, 8.550340340302192], "xdomain": [-0.45, 9.45], "ydomain": [-5.43009574063083, 8.550340340302192], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 7, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 9, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el724095099984112", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el724095100014512", "color": "#1F77B4", "linewidth": 1.5, "dasharray": "none", "alpha": 1, "zorder": 2, "drawstyle": "default"}], "paths": [], "markers": [], "texts": [], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[0.0, 0.0], [1.0, 0.8414709848078965], [2.0, 1.8185948536513634], [3.0, 0.4233600241796016], [4.0, -3.0272099812317133], [5.0, -4.794621373315692], [6.0, -1.6764929891935552], [7.0, 4.598906191031523], [8.0, 7.914865972987054], [9.0, 3.7090663671758093]]}, "id": "el724095005224016", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}]});
+      });
+    });
+}else{
+    // require.js not available: dynamically load d3 & mpld3
+    mpld3_load_lib("https://d3js.org/d3.v5.js", function(){
+         mpld3_load_lib("https://mpld3.github.io/js/mpld3.v0.5.9.js", function(){
+                 
+                 mpld3.draw_figure("fig_el7240950052240162651308582", {"width": 1280.0, "height": 960.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [-0.45, 9.45], "ylim": [-5.43009574063083, 8.550340340302192], "xdomain": [-0.45, 9.45], "ydomain": [-5.43009574063083, 8.550340340302192], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 7, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 9, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el724095099984112", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el724095100014512", "color": "#1F77B4", "linewidth": 1.5, "dasharray": "none", "alpha": 1, "zorder": 2, "drawstyle": "default"}], "paths": [], "markers": [], "texts": [], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[0.0, 0.0], [1.0, 0.8414709848078965], [2.0, 1.8185948536513634], [3.0, 0.4233600241796016], [4.0, -3.0272099812317133], [5.0, -4.794621373315692], [6.0, -1.6764929891935552], [7.0, 4.598906191031523], [8.0, 7.914865972987054], [9.0, 3.7090663671758093]]}, "id": "el724095005224016", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}]});
+            })
+         });
+}
+</script>
