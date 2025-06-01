@@ -47,10 +47,27 @@
       .table td {
         vertical-align: middle;
       }
+      .nav-links {
+        margin-bottom: 20px;
+      }
+      .nav-links a {
+        margin-right: 15px;
+        text-decoration: none;
+        color: #6c757d;
+      }
+      .nav-links a.active {
+        color: #007bff;
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
     <div class="container">
+      <div class="nav-links">
+        <a href="/" class="active">JOSAA Data</a>
+        <a href="/csab">CSAB Data</a>
+      </div>
+
       <h1 class="text-center mb-4">JOSAA Data Search</h1>
 
       <div class="search-container">
@@ -193,8 +210,8 @@
           placeholder: "Select Institutes",
         });
 
-        // Load institutes
-        fetch("/get-institutes")
+        // Load institutes for JOSAA
+        fetch("/get-institutes?category=josaa")
           .then((response) => response.json())
           .then((institutes) => {
             const instituteSelect = document.getElementById("institutes");
@@ -212,6 +229,7 @@
           e.preventDefault();
 
           const formData = {
+            category: "josaa",
             rounds: $("#rounds").val().map(Number),
             seatType: $("#seatType").val(),
             institutes: $("#institutes").val(),

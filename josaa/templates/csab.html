@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSAB Data Search</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        padding: 20px;
+      }
+      .search-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      .results-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .select2-container {
+        width: 100% !important;
+      }
+      .table {
+        font-size: 0.9rem;
+      }
+      .table th {
+        font-weight: 600;
+        background-color: #f8f9fa;
+      }
+      .table td {
+        vertical-align: middle;
+      }
+      .nav-links {
+        margin-bottom: 20px;
+      }
+      .nav-links a {
+        margin-right: 15px;
+        text-decoration: none;
+        color: #6c757d;
+      }
+      .nav-links a.active {
+        color: #007bff;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav-links">
+        <a href="/">JOSAA Data</a>
+        <a href="/csab" class="active">CSAB Data</a>
+      </div>
+
+      <h1 class="text-center mb-4">CSAB Data Search</h1>
+
+      <div class="search-container">
+        <form id="searchForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="rounds">Round:</label>
+                <select class="form-control" id="rounds" name="rounds" multiple>
+                  <option value="1">Round 1</option>
+                  <option value="2">Round 2</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="seatType">Seat Type:</label>
+                <select
+                  class="form-control"
+                  id="seatType"
+                  name="seatType"
+                  multiple
+                >
+                  <option value="OBC-NCL">OBC-NCL</option>
+                  <option value="OPEN">OPEN</option>
+                  <option value="SC">SC</option>
+                  <option value="ST">ST</option>
+                  <option value="EWS">EWS</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="institutes">Institute:</label>
+                <select
+                  class="form-control"
+                  id="institutes"
+                  name="institutes"
+                  multiple
+                >
+                  <!-- Options will be loaded dynamically -->
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select class="form-control" id="gender" name="gender">
+                  <option value="">Select Gender</option>
+                  <option value="Gender-Neutral">Gender-Neutral</option>
+                  <option value="Female-only">
+                    Female-only (including Supernumerary)
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Rank Type:</label>
+                <select class="form-control" id="rankType" name="rankType">
+                  <option value="">Select Rank Type</option>
+                  <option value="opening">Opening Rank</option>
+                  <option value="closing">Closing Rank</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3" id="rankRangeContainer">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="minRank">Minimum Rank:</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="minRank"
+                  name="minRank"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="maxRank">Maximum Rank:</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="maxRank"
+                  name="maxRank"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="reset" class="btn btn-secondary ms-2">Clear</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="results-container">
+        <h3>Results</h3>
+        <div id="results" class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Round</th>
+                <th>Institute</th>
+                <th>Academic Program</th>
+                <th>Quota</th>
+                <th>Seat Type</th>
+                <th>Gender</th>
+                <th>Opening Rank</th>
+                <th>Closing Rank</th>
+              </tr>
+            </thead>
+            <tbody id="resultsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#rounds").select2({
+          placeholder: "Select Rounds",
+        });
+        $("#seatType").select2({
+          placeholder: "Select Seat Types",
+        });
+        $("#institutes").select2({
+          placeholder: "Select Institutes",
+        });
+
+        // Load institutes for CSAB
+        fetch("/get-institutes?category=csab")
+          .then((response) => response.json())
+          .then((institutes) => {
+            const instituteSelect = document.getElementById("institutes");
+            institutes.forEach((institute) => {
+              const option = new Option(institute, institute);
+              instituteSelect.appendChild(option);
+            });
+          })
+          .catch((error) => console.error("Error loading institutes:", error));
+      });
+
+      document
+        .getElementById("searchForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const formData = {
+            category: "csab",
+            rounds: $("#rounds").val().map(Number),
+            seatType: $("#seatType").val(),
+            institutes: $("#institutes").val(),
+            gender: document.getElementById("gender").value,
+            rankType: document.getElementById("rankType").value,
+            minRank: document.getElementById("minRank").value
+              ? parseInt(document.getElementById("minRank").value)
+              : null,
+            maxRank: document.getElementById("maxRank").value
+              ? parseInt(document.getElementById("maxRank").value)
+              : null,
+          };
+
+          try {
+            const response = await fetch("/search", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+            displayResults(data);
+          } catch (error) {
+            console.error("Error:", error);
+          }
+        });
+
+      function displayResults(results) {
+        const tbody = document.getElementById("resultsBody");
+        tbody.innerHTML = "";
+
+        results.forEach((result) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${result.Round}</td>
+            <td>${result.Institute}</td>
+            <td>${result["Academic Program Name"]}</td>
+            <td>${result.Quota}</td>
+            <td>${result["Seat Type"]}</td>
+            <td>${result.Gender}</td>
+            <td>${result["Opening Rank"]}</td>
+            <td>${result["Closing Rank"]}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+    </script>
+  </body>
+</html>

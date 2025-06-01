@@ -13,7 +13,8 @@ client = MongoClient(
     "mongodb+srv://testsiddheshkanawade:Q41c1fALOVs3nLaU@cluster0.pf6vbum.mongodb.net/"
 )
 db = client["josaa"]  # database name
-collection = db["college_data"]  # collection name
+josaa_collection = db["college_data"]  # collection name for JOSAA data
+csab_collection = db["csab_college_data"]  # collection name for CSAB data
 
 
 @app.route("/")
@@ -21,8 +22,15 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/csab")
+def csab():
+    return render_template("csab.html")
+
+
 @app.route("/get-institutes", methods=["GET"])
 def get_institutes():
+    category = request.args.get("category", "josaa")
+    collection = csab_collection if category == "csab" else josaa_collection
     # Get unique institutes sorted alphabetically
     institutes = sorted(collection.distinct("Institute"))
     return jsonify(institutes)
@@ -31,6 +39,9 @@ def get_institutes():
 @app.route("/search", methods=["POST"])
 def search():
     search_params = request.json
+    category = search_params.get("category", "josaa")
+    collection = csab_collection if category == "csab" else josaa_collection
+    
     query = {}
 
     # Handle Round filter (multiple selection)
@@ -63,6 +74,10 @@ def search():
 
         if rank_query:
             query[rank_field] = rank_query
+
+    # Add category filter for CSAB data
+    if category == "csab":
+        query["Category"] = "csab"
 
     # Perform the search
     results = list(collection.find(query, {"_id": 0}))

@@ -4,7 +4,7 @@ import os
 import glob
 
 # Get all HTML files from raw_data directory and its subdirectories
-html_files = glob.glob("./raw_data/**/*.html", recursive=True)
+html_files = glob.glob("./raw_data/**/**/*.html", recursive=True)
 
 for filename in html_files:
     # Extract category and round name from the file path

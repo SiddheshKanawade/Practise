@@ -8,7 +8,7 @@ MONGO_URL = (
 )
 
 DB_NAME = "josaa"
-COLLECTION_NAME = "college_data"
+COLLECTION_NAME = "csab_college_data"
 
 client = pymongo.MongoClient(MONGO_URL)
 db = client[DB_NAME]
@@ -36,7 +36,7 @@ def main():
     print("Cleared existing data from collection")
 
     # Get all CSV files from output directory
-    csv_files = glob("./output/**/*.csv", recursive=True)
+    csv_files = glob("./output/csab/**/*.csv", recursive=True)
 
     total_records = 0
     for file_path in csv_files:
