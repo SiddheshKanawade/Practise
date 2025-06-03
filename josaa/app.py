@@ -36,6 +36,15 @@ def get_institutes():
     return jsonify(institutes)
 
 
+@app.route("/get-branches", methods=["GET"])
+def get_branches():
+    category = request.args.get("category", "josaa")
+    collection = csab_collection if category == "csab" else josaa_collection
+    # Get unique academic programs (branches) sorted alphabetically
+    branches = sorted(collection.distinct("Academic Program Name"))
+    return jsonify(branches)
+
+
 @app.route("/search", methods=["POST"])
 def search():
     search_params = request.json
@@ -59,6 +68,10 @@ def search():
     # Handle Institute filter (multiple selection)
     if search_params.get("institutes"):
         query["Institute"] = {"$in": search_params["institutes"]}
+
+    # Handle Branch filter (multiple selection)
+    if search_params.get("branches"):
+        query["Academic Program Name"] = {"$in": search_params["branches"]}
 
     # Handle Rank Range filter
     if search_params.get("rankType"):
