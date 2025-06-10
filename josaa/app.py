@@ -45,6 +45,15 @@ def get_branches():
     return jsonify(branches)
 
 
+@app.route("/get-quotas", methods=["GET"])
+def get_quotas():
+    category = request.args.get("category", "josaa")
+    collection = csab_collection if category == "csab" else josaa_collection
+    # Get unique quotas sorted alphabetically
+    quotas = sorted(collection.distinct("Quota"))
+    return jsonify(quotas)
+
+
 @app.route("/search", methods=["POST"])
 def search():
     search_params = request.json
@@ -72,6 +81,10 @@ def search():
     # Handle Branch filter (multiple selection)
     if search_params.get("branches"):
         query["Academic Program Name"] = {"$in": search_params["branches"]}
+        
+    # Handle Quota filter (multiple selection)
+    if search_params.get("quotas"):
+        query["Quota"] = {"$in": search_params["quotas"]}
 
     # Handle Rank Range filter
     if search_params.get("rankType"):
@@ -96,7 +109,7 @@ def search():
     results = list(collection.find(query, {"_id": 0}))
 
     # Sort results by Closing Rank
-    results.sort(key=lambda x: x.get("Closing Rank", float("inf")))
+    results.sort(key=lambda x: x.get("Opening Rank", float("inf")))
 
     return jsonify(results)
 

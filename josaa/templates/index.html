@@ -134,6 +134,17 @@
           </div>
 
           <div class="row mt-3">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="quotas">Quota:</label>
+                <select class="form-control" id="quotas" name="quotas" multiple>
+                  <!-- Options will be loaded dynamically -->
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
             <div class="col-md-6">
               <div class="form-group">
                 <label for="gender">Gender:</label>
@@ -232,6 +243,10 @@
           placeholder: "Select Academic Programs",
           closeOnSelect: false,
         });
+        $("#quotas").select2({
+          placeholder: "Select Quotas",
+          closeOnSelect: false,
+        });
 
         // Load institutes for JOSAA
         fetch("/get-institutes?category=josaa")
@@ -256,6 +271,18 @@
             });
           })
           .catch((error) => console.error("Error loading branches:", error));
+
+        // Load quotas for JOSAA
+        fetch("/get-quotas?category=josaa")
+          .then((response) => response.json())
+          .then((quotas) => {
+            const quotaSelect = document.getElementById("quotas");
+            quotas.forEach((quota) => {
+              const option = new Option(quota, quota);
+              quotaSelect.appendChild(option);
+            });
+          })
+          .catch((error) => console.error("Error loading quotas:", error));
       });
 
       document
@@ -269,6 +296,7 @@
             seatType: $("#seatType").val(),
             institutes: $("#institutes").val(),
             branches: $("#branches").val(),
+            quotas: $("#quotas").val(),
             gender: document.getElementById("gender").value,
             rankType: document.getElementById("rankType").value,
             minRank: document.getElementById("minRank").value
@@ -306,6 +334,7 @@
           $("#seatType").val(null).trigger("change");
           $("#institutes").val(null).trigger("change");
           $("#branches").val(null).trigger("change");
+          $("#quotas").val(null).trigger("change");
 
           // Clear regular form fields
           document.getElementById("gender").value = "";
